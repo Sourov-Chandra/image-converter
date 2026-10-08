@@ -41,7 +41,6 @@ export function UploadZone({ onFilesSelected, disabled = false, compact = false 
   const handleFileInput = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       onFilesSelected(Array.from(e.target.files));
-      // Reset input value so same files can be re-selected if removed
       e.target.value = '';
     }
   };
@@ -73,7 +72,7 @@ export function UploadZone({ onFilesSelected, disabled = false, compact = false 
           type="button"
           onClick={handleClick}
           disabled={disabled}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/60 rounded-xl transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 border border-indigo-200/60 dark:border-indigo-800/60 rounded-xl transition-colors cursor-pointer"
         >
           <UploadCloud className="w-3.5 h-3.5" />
           Add More Images
@@ -92,10 +91,10 @@ export function UploadZone({ onFilesSelected, disabled = false, compact = false 
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`relative w-full rounded-2xl border-2 border-dashed transition-all duration-200 cursor-pointer p-8 sm:p-12 text-center select-none outline-none focus:ring-4 focus:ring-indigo-100 ${
+      className={`relative w-full rounded-2xl border-2 border-dashed transition-all duration-200 cursor-pointer p-8 sm:p-12 text-center select-none outline-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-950 ${
         isDragOver
-          ? 'border-indigo-500 bg-indigo-50/70 scale-[1.01] shadow-lg shadow-indigo-100/50'
-          : 'border-slate-300 hover:border-indigo-400 bg-white hover:bg-slate-50/60 shadow-[0_2px_10px_rgba(0,0,0,0.03)]'
+          ? 'border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/40 scale-[1.01] shadow-lg shadow-indigo-100/50 dark:shadow-none'
+          : 'border-slate-300 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500 bg-white dark:bg-slate-900/90 hover:bg-slate-50/60 dark:hover:bg-slate-800/40 shadow-[0_2px_10px_rgba(0,0,0,0.03)]'
       } ${disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
     >
       <input
@@ -111,7 +110,9 @@ export function UploadZone({ onFilesSelected, disabled = false, compact = false 
       <div className="flex flex-col items-center justify-center pointer-events-none">
         <div
           className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform ${
-            isDragOver ? 'bg-indigo-600 text-white scale-110' : 'bg-indigo-50 text-indigo-600'
+            isDragOver
+              ? 'bg-indigo-600 text-white scale-110'
+              : 'bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400'
           }`}
         >
           {isDragOver ? (
@@ -121,13 +122,13 @@ export function UploadZone({ onFilesSelected, disabled = false, compact = false 
           )}
         </div>
 
-        <h3 className="text-lg font-bold text-slate-800 tracking-tight">
+        <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 tracking-tight">
           {isDragOver ? 'Drop images here' : 'Upload your images'}
         </h3>
 
-        <p className="mt-1 text-sm text-slate-500">
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
           Drag & drop files here or{' '}
-          <span className="font-semibold text-indigo-600 underline underline-offset-2">
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400 underline underline-offset-2">
             Choose Images
           </span>
         </p>
@@ -136,14 +137,14 @@ export function UploadZone({ onFilesSelected, disabled = false, compact = false 
           {['JPG', 'PNG', 'JFIF', 'WEBP', 'GIF', 'AVIF'].map((fmt) => (
             <span
               key={fmt}
-              className="px-2.5 py-1 text-[11px] font-bold tracking-wider rounded-lg bg-slate-100 text-slate-600 border border-slate-200/60"
+              className="px-2.5 py-1 text-[11px] font-bold tracking-wider rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
             >
               {fmt}
             </span>
           ))}
         </div>
 
-        <p className="mt-4 text-xs text-slate-400 font-medium">
+        <p className="mt-4 text-xs text-slate-400 dark:text-slate-500 font-medium">
           Up to 20 files per batch · Max 15 MB each · Total batch limit 100 MB
         </p>
       </div>

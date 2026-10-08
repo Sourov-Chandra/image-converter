@@ -24,13 +24,13 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section className="py-12 border-t border-slate-200/80 bg-white">
+    <section className="py-12 border-t border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-2 block">
+          <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2 block">
             Simple 3-Step Process
           </span>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
             How It Works
           </h2>
         </div>
@@ -41,18 +41,18 @@ export function HowItWorks() {
             return (
               <div
                 key={s.step}
-                className="relative p-6 rounded-2xl bg-slate-50/70 border border-slate-200/70 text-left space-y-3"
+                className="relative p-6 rounded-2xl bg-slate-50/70 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800 text-left space-y-3"
               >
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-sm shadow-indigo-200">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-sm shadow-indigo-200 dark:shadow-none">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className="font-mono text-2xl font-black text-slate-200">
+                  <span className="font-mono text-2xl font-black text-slate-200 dark:text-slate-800">
                     {s.step}
                   </span>
                 </div>
-                <h3 className="font-bold text-base text-slate-900">{s.title}</h3>
-                <p className="text-xs text-slate-500 leading-relaxed">{s.desc}</p>
+                <h3 className="font-bold text-base text-slate-900 dark:text-white">{s.title}</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{s.desc}</p>
               </div>
             );
           })}

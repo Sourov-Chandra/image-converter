@@ -12,17 +12,17 @@ const FORMATS = [
 
 export function SupportedFormats() {
   return (
-    <section className="py-12 border-t border-slate-200/80">
+    <section className="py-12 border-t border-slate-200/80 dark:border-slate-800">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600 mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 mb-2">
             <Layers className="w-4 h-4" />
             Compatibility Matrix
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
             Supported Image Formats
           </h2>
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
             Easily convert between all leading modern and legacy static image standards.
           </p>
         </div>
@@ -31,12 +31,12 @@ export function SupportedFormats() {
           {FORMATS.map((item) => (
             <div
               key={item.name}
-              className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-sm hover:border-indigo-200 transition-colors"
+              className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors"
             >
-              <span className="font-mono font-bold text-sm text-indigo-600 block mb-1">
+              <span className="font-mono font-bold text-sm text-indigo-600 dark:text-indigo-400 block mb-1">
                 {item.name}
               </span>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 {item.desc}
               </p>
             </div>

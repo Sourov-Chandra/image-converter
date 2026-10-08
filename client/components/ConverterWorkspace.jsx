@@ -241,15 +241,14 @@ export function ConverterWorkspace() {
     }
   };
 
-  // If a single image was successfully converted and user wants to see the dedicated result card
   const isSingleSuccess = fileItems.length === 1 && fileItems[0].status === 'success' && fileItems[0].result;
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
       {/* Error alert */}
       {globalError && (
-        <div className="mb-6 p-4 rounded-2xl bg-red-50 border border-red-200/90 text-red-800 text-sm flex items-start gap-3 shadow-sm">
-          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200/90 dark:border-red-900/60 text-red-800 dark:text-red-300 text-sm flex items-start gap-3 shadow-sm">
+          <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-semibold block">Conversion Alert</span>
             <span>{globalError}</span>
@@ -257,7 +256,7 @@ export function ConverterWorkspace() {
           <button
             type="button"
             onClick={() => setGlobalError(null)}
-            className="text-red-400 hover:text-red-600 text-xs font-bold"
+            className="text-red-400 hover:text-red-600 dark:hover:text-red-300 text-xs font-bold"
           >
             Dismiss
           </button>
@@ -290,9 +289,9 @@ export function ConverterWorkspace() {
         <div className="space-y-6">
           <Card className="p-4 sm:p-6 space-y-6">
             {/* Header toolbar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-slate-900">
+                <span className="text-sm font-bold text-slate-900 dark:text-white">
                   Convert All To:
                 </span>
                 <FormatSelector
@@ -308,7 +307,7 @@ export function ConverterWorkspace() {
                   size="sm"
                   onClick={handleClearAll}
                   disabled={isProcessing}
-                  className="text-red-600 hover:text-red-700 hover:bg-red-50 gap-1.5"
+                  className="text-red-600 dark:text-red-400 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/40 gap-1.5"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   Clear All
@@ -347,7 +346,7 @@ export function ConverterWorkspace() {
                 onClick={handleConvert}
                 isLoading={isProcessing}
                 disabled={fileItems.length === 0}
-                className="w-full text-base py-4 shadow-lg shadow-indigo-200"
+                className="w-full text-base py-4 shadow-lg shadow-indigo-200 dark:shadow-none"
               >
                 <Play className="w-5 h-5 fill-current" />
                 Convert {fileItems.length} {fileItems.length === 1 ? 'Image' : 'Images'}
