@@ -9,30 +9,21 @@ export function ThemeToggle({ className = '' }) {
 
   useEffect(() => {
     setMounted(true);
-    // Check initial preference from localStorage or OS system
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-    }
+    // Sync state with whatever class is currently on html (set by inline head script)
+    const isDark = document.documentElement.classList.contains('dark');
+    setTheme(isDark ? 'dark' : 'light');
   }, []);
 
   const toggleTheme = () => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    localStorage.setItem('theme', nextTheme);
-
-    if (nextTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setTheme('light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setTheme('dark');
     }
   };
 

@@ -15,7 +15,7 @@ export function FileList({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-bold text-slate-800">
+        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100">
           Selected Files ({items.length})
         </h3>
         {items.length < 20 && (

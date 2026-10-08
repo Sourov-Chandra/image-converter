@@ -16,9 +16,13 @@ export function Slider({
   return (
     <div className={`space-y-1.5 ${className}`}>
       {(label || valueDisplay) && (
-        <div className="flex justify-between items-center text-xs font-semibold text-slate-600">
+        <div className="flex justify-between items-center text-xs font-semibold text-slate-600 dark:text-slate-300">
           {label && <span>{label}</span>}
-          {valueDisplay && <span className="text-indigo-600 font-bold bg-indigo-50 px-2 py-0.5 rounded-md">{valueDisplay}</span>}
+          {valueDisplay && (
+            <span className="text-indigo-600 dark:text-indigo-300 font-bold bg-indigo-50 dark:bg-indigo-950/70 px-2 py-0.5 rounded-md border border-indigo-100 dark:border-indigo-800/60">
+              {valueDisplay}
+            </span>
+          )}
         </div>
       )}
       <input
@@ -29,7 +33,7 @@ export function Slider({
         value={value}
         disabled={disabled}
         onChange={(e) => onChange?.(Number(e.target.value))}
-        className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
+        className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-indigo-600 dark:accent-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50"
       />
     </div>
   );
