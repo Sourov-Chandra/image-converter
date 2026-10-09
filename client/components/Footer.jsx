@@ -8,11 +8,9 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           {/* Brand */}
           <div className="flex items-center gap-2 font-semibold text-slate-700 dark:text-slate-200">
-            <img
-              src="/logo.png"
-              alt="ImageShift Logo"
-              className="w-6 h-6 rounded-lg object-contain"
-            />
+            <div className="w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+              <ArrowLeftRight className="w-3.5 h-3.5" />
+            </div>
             <span>ImageShift Converter</span>
             <span className="text-slate-400 dark:text-slate-500 font-normal">· Fast & Private</span>
           </div>
