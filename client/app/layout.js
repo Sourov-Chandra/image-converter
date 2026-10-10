@@ -74,7 +74,10 @@ export const metadata = {
   },
   manifest: '/site.webmanifest',
   verification: {
-    google: 'lBwzqKiRVnYkeg7cZ8JOYs0u82AkhKMln5QxfonJpaM'
+    google: 'lBwzqKiRVnYkeg7cZ8JOYs0u82AkhKMln5QxfonJpaM',
+    other: {
+      'msvalidate.01': 'CEED2654F9C17F5EBF0A9FC6BDA527C0'
+    }
   }
 };
 
@@ -143,6 +146,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="lBwzqKiRVnYkeg7cZ8JOYs0u82AkhKMln5QxfonJpaM" />
+        <meta name="msvalidate.01" content="CEED2654F9C17F5EBF0A9FC6BDA527C0" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
