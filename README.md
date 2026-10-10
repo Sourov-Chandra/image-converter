@@ -1,4 +1,6 @@
-# Image Converter
+# Picnito - Free Online Image Converter
+
+**Live Demo**: [https://picnito.vercel.app](https://picnito.vercel.app)
 
 A fast, clean, anonymous image-conversion web application built with **Next.js App Router (JavaScript/JSX)** and an **Express.js + Sharp** backend.
 

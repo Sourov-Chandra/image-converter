@@ -15,7 +15,7 @@ export function Header() {
           </div>
           <div>
             <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
-              ImageShift
+              Picnito
               <span className="text-[11px] font-semibold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/70 border border-indigo-200/60 dark:border-indigo-800/60 px-2 py-0.5 rounded-full">
                 Free
               </span>

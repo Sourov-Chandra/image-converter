@@ -11,7 +11,7 @@ export function Footer() {
             <div className="w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
               <ArrowLeftRight className="w-3.5 h-3.5" />
             </div>
-            <span>ImageShift Converter</span>
+            <span>Picnito Image Converter</span>
             <span className="text-slate-400 dark:text-slate-500 font-normal">· Fast & Private</span>
           </div>
 

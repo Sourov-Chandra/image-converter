@@ -4,6 +4,7 @@ import { Hero } from '../components/Hero.jsx';
 import { ConverterWorkspace } from '../components/ConverterWorkspace.jsx';
 import { SupportedFormats } from '../components/SupportedFormats.jsx';
 import { HowItWorks } from '../components/HowItWorks.jsx';
+import { FAQ } from '../components/FAQ.jsx';
 import { PrivacyNote } from '../components/PrivacyNote.jsx';
 import { Footer } from '../components/Footer.jsx';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
         <ConverterWorkspace />
         <SupportedFormats />
         <HowItWorks />
+        <FAQ />
         <PrivacyNote />
       </main>
       <Footer />
