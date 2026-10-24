@@ -203,3 +203,30 @@ npm --prefix server test
   }
 }
 ```
+
+---
+
+## ☁️ Deployment & Troubleshooting
+
+### Why "Conversion Alert: Network error. Unable to reach the conversion server"?
+
+This happens when the frontend client cannot reach the backend API:
+
+1. **Running locally**:
+   * Make sure **both** the backend and frontend are running simultaneously:
+     * Terminal 1: `npm --prefix server run dev` (starts on `http://localhost:5000`)
+     * Terminal 2: `npm --prefix client run dev` (starts on `http://localhost:3000`)
+
+2. **Deploying on Vercel (`picnito.vercel.app`)**:
+   * Vercel only hosts the Next.js frontend; the Express backend must be hosted on a Node.js server (e.g. Render, Railway, Fly.io, or VPS).
+   * After deploying your backend to Render:
+     1. Copy your live backend service URL (e.g., `https://image-converter-api-xxxx.onrender.com`).
+     2. Open your Vercel project dashboard $\rightarrow$ **Settings** $\rightarrow$ **Environment Variables**.
+     3. Add:
+        * **Key**: `NEXT_PUBLIC_API_BASE_URL`
+        * **Value**: `https://<your-backend-app>.onrender.com/api/v1`
+     4. Go to **Deployments** and click **Redeploy** to rebuild the frontend with the production API URL.
+
+3. **Render Free Tier Cold Starts**:
+   * Free-tier Web Services on Render automatically sleep after 15 minutes of inactivity.
+   * The first conversion request may take ~50–90 seconds while the server spins up. Subsequent requests will be fast.

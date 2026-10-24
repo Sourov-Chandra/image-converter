@@ -1,6 +1,20 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000/api/v1';
 
 /**
+ * Diagnostic helper for network failures (local dev vs deployed production)
+ */
+function getNetworkErrorMessage() {
+  if (
+    typeof window !== 'undefined' &&
+    window.location.protocol === 'https:' &&
+    API_BASE_URL.startsWith('http://localhost')
+  ) {
+    return 'Configuration Error: The live website is trying to connect to localhost. Please configure NEXT_PUBLIC_API_BASE_URL in your Vercel Project Environment Variables with your deployed backend URL.';
+  }
+  return 'Network error. Unable to reach the conversion server. If your backend is hosted on a free platform (e.g. Render), please wait a moment for it to wake up from sleep and try again.';
+}
+
+/**
  * Parse structured error response from server
  */
 async function parseError(response) {
@@ -48,7 +62,7 @@ export async function convertSingleImage(file, options = {}) {
       body: formData
     });
   } catch (err) {
-    throw new Error('Network error. Unable to reach the conversion server.');
+    throw new Error(getNetworkErrorMessage());
   }
 
   if (!response.ok) {
@@ -111,7 +125,7 @@ export async function convertBatchImages(files, options = {}) {
       body: formData
     });
   } catch (err) {
-    throw new Error('Network error. Unable to reach the conversion server.');
+    throw new Error(getNetworkErrorMessage());
   }
 
   if (!response.ok) {

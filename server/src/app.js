@@ -9,15 +9,32 @@ import { errorHandler } from './middleware/errorHandler.js';
 const app = express();
 
 // Security headers
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' }
+}));
 
 // Cross-Origin Resource Sharing with exposed custom headers
-const corsOrigin = config.nodeEnv === 'production'
-  ? config.frontendOrigin
-  : true; // Allow local dev flexibly
+const allowedOrigins = config.frontendOrigin
+  ? config.frontendOrigin.split(',').map((o) => o.trim())
+  : ['http://localhost:3000', 'https://picnito.vercel.app'];
 
-app.use(cors({
-  origin: corsOrigin,
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow server-to-server requests or tools like Postman/curl (no origin header)
+    if (!origin) return callback(null, true);
+
+    if (
+      config.nodeEnv !== 'production' ||
+      config.frontendOrigin === '*' ||
+      allowedOrigins.includes(origin) ||
+      allowedOrigins.includes('*') ||
+      origin.endsWith('.vercel.app')
+    ) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`Origin ${origin} not allowed by CORS`));
+  },
   credentials: true,
   exposedHeaders: [
     'Content-Disposition',
@@ -30,7 +47,9 @@ app.use(cors({
     'X-Successful-Files',
     'X-Failed-Files'
   ]
-}));
+};
+
+app.use(cors(corsOptions));
 
 // Body parsers
 app.use(express.json());
